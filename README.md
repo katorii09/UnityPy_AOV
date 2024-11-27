@@ -26,7 +26,6 @@ env = UnityPy_AOV.load("test.assetbundle")
 os.makedirs("Texture2D",exist_ok=True)
 
 for obj in env.objects:
-
     if obj.type.name == "Texture2D":
         data = obj.read()
         dest = os.path.join("Texture2D", f'{data.m_Name}')
@@ -46,7 +45,6 @@ env = UnityPy_AOV.load("test.assetbundle")
 
 for obj in env.objects:
     if obj.type.name == "Texture2D":
-        # export texture
         data = obj.read()
         # edit texture
         fp = os.path.join("Texture2D", f"{data.m_Name}.png")
