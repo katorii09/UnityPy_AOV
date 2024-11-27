@@ -71,4 +71,4 @@ https://github.com/user-attachments/assets/7781f338-0198-475c-8d01-5ae4fe914ce0
 
 ## Credit & Thanks
 
-* [UnityPy](https://github.com/K0lb3/UnityPy)
+* [K0lb3 - UnityPy](https://github.com/K0lb3/UnityPy)
