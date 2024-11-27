@@ -13,6 +13,8 @@ pip install git+https://github.com/hexaov91/UnityPy_AOV.git
 
 ## Example
 
+The usage is same as UnityPy
+
 #### Extract Texture2D
 
 ```python
