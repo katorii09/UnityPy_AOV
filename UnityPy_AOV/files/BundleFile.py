@@ -335,7 +335,7 @@ class BundleFile(File.File):
         # uncompressed size
         block_writer.write_u_int(uncompressed_data_size)
 
-        #data_flag = 0x43
+        data_flag = 0x43
         # file block info
         if not data_flag & 0x40:
             raise NotImplementedError(
