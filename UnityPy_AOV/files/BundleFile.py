@@ -96,11 +96,9 @@ class BundleFile(File.File):
 
     def read_fs(self, reader: EndianBinaryReader):
         # 解密header
-        bundleHeader = self.decryptHeader(reader.read_bytes(16))
+        bundleHeader = reader.read_bytes(16)
         
-        size=int.from_bytes(bundleHeader[0x0:0x8], 'little')
-        compressedSize=int.from_bytes(bundleHeader[0x8:0xc], 'little')
-        uncompressedSize=int.from_bytes(bundleHeader[0xc:0x10], 'little')
+
 
         self.dataflags = reader.read_u_int()
 
@@ -121,6 +119,18 @@ class BundleFile(File.File):
 
         if self.version >= 7:
             reader.align_stream(16)
+
+        if self.dataflags & self.dataflags.UsesAssetBundleEncryption:
+            bundleHeader = self.decryptHeader(bundleHeader)
+            size=int.from_bytes(bundleHeader[0x0:0x8], 'little')
+            compressedSize=int.from_bytes(bundleHeader[0x8:0xc], 'little')
+            uncompressedSize=int.from_bytes(bundleHeader[0xc:0x10], 'little')
+        else:
+
+            size=int.from_bytes(bundleHeader[0x0:0x8], 'big')
+            compressedSize=int.from_bytes(bundleHeader[0x8:0xc], 'big')
+            uncompressedSize=int.from_bytes(bundleHeader[0xc:0x10], 'big')
+        print(size,uncompressedSize)
 
         start = reader.Position
         if (
@@ -335,7 +345,7 @@ class BundleFile(File.File):
         # uncompressed size
         block_writer.write_u_int(uncompressed_data_size)
 
-        data_flag = 0x43
+        #data_flag = 0x43
         # file block info
         if not data_flag & 0x40:
             raise NotImplementedError(
