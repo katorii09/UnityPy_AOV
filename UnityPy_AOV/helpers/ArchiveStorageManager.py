@@ -17,6 +17,7 @@ class ArchiveStorageDecryptor:
 
     def decrypt_block(self, data: bytes):
         blocksize = (len(data)//16)*16
+        unencrypted_part = data[-(len(data) % 16):] if len(data) % 16 != 0 else b''
         key0 = SM4Key(self.BlockSM4Key)
         decrypt_data=key0.decrypt(data[0:blocksize],initial=bytearray(self.BlockSM4IV))
-        return decrypt_data + data[-(len(data)%16):]
+        return decrypt_data + unencrypted_part
