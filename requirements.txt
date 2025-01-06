@@ -8,4 +8,4 @@ pyfmodex >= 0.7.1
 fsspec==2023.4.0
 attrs==22.2.0
 sm4==1.0.2
-pycryptodomex==3.19.0
+pycryptodome==3.21.0
