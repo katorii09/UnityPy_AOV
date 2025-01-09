@@ -59,13 +59,14 @@ with open("test_moded.assetbundle", "wb") as f:
 
 More examples can be found [here](https://github.com/K0lb3/UnityPy#example).
 
-## result
+#### About Mesh
 
-You can also modify the mesh file, try it yourself :P
+Due to slight changes in the mesh structure, even if you build and export the raw data of the mesh using the same version of the Unity engine, you cannot use it directly.  
+*(Hint: Set the value of `m_IsInUse` to the number of bones.)*
 
-https://github.com/user-attachments/assets/7781f338-0198-475c-8d01-5ae4fe914ce0
+Once you’ve processed it, use `obj.set_raw_data(YourMeshData)` to complete the mesh replacement.  
 
-
+If the structure is incorrect, UnityPy (or others tool) may throw an error when attempting to parse this object next time.
 
 ## Credit & Thanks
 
