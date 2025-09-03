@@ -8,7 +8,7 @@ The module is based on [UnityPy (1.9.24)](https://github.com/K0lb3/UnityPy/commi
 ## Installation
 
 ```sh
-pip install git+https://github.com/hexaov91/UnityPy_AOV.git
+pip install git+https://github.com/katorii09/UnityPy_AOV.git
 ```
 
 ## Example
